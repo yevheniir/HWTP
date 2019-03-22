@@ -13,6 +13,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     StuffComponent,
     MainPageComponent,
     ShoppingCartComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserAnimationsModule,

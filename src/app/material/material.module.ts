@@ -5,7 +5,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import {MatInputModule} from '@angular/material';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
   ],
   exports: [
     MatToolbarModule,
@@ -25,6 +29,8 @@ import {MatInputModule} from '@angular/material';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
   ]
 })
 export class MaterialModule { }

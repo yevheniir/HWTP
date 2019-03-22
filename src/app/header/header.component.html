@@ -1,7 +1,13 @@
 
 <mat-toolbar class="main">
-    <span class="title">Home Work Transfer Protocol</span>
-    <span class="example-fill-remaining-space">First Row2</span>
-    <span>First Row3</span>
+    <span [routerLink]="[ '/' ]" class="title">Home Work Transfer Protocol</span>
+    <mat-toolbar class="cart" [routerLink]="[ '/shopping-cart' ]">
+        <img src="../../assets/seo-56-512.png" alt="">
+        <span>Куплено: 10</span>
+        <span>На сумму: 200 грн</span>
+    </mat-toolbar>
+
+
+    <!-- <span>First Row3</span> -->
 </mat-toolbar>
 

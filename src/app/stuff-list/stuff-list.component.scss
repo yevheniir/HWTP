@@ -4,13 +4,20 @@ table {
 
 .mat-form-field {
   color: #fff;
-  padding-left: 10px;
   background-color: #424242;
   font-size: 20px;
   width: 100%;
 }
 
+.filter-input {
+  // padding-left: 10px;
+}
+
 .parent-table {
-  height: 400px;
+  height: 84.7vh;
   overflow: auto;
+}
+
+.mat-table {
+  height: 100%;
 }

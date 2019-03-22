@@ -1,0 +1,11 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Фильтр за:
+      </mat-panel-title>
+      <mat-panel-description>
+        {{title}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-checkbox *ngFor="let item of items">{{item}}</mat-checkbox>
+</mat-expansion-panel>

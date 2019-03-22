@@ -1,9 +1,28 @@
 .main {
   display: grid;
-  grid-template-columns: 6fr 1fr 1fr;
+  grid-template-columns: 6fr 2fr;
 }
 
 .title {
+  cursor: pointer;
   text-align: center;
 }
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.cart {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 2fr;
+  text-align: center;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: rgb(20, 20, 20);
+  }
+}
+
 
