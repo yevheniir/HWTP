@@ -14,10 +14,15 @@ table {
 }
 
 .parent-table {
-  height: 84.7vh;
+  height: 100%;
   overflow: auto;
 }
 
 .mat-table {
   height: 100%;
 }
+
+.main {
+  height: calc(100vh - 64px - 56.775px - 25px);
+}
+

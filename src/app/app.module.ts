@@ -12,8 +12,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FilterComponent } from './filter/filter.component';
+import { HWTPService } from './hwtp.service';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,8 @@ import { FilterComponent } from './filter/filter.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
   ],
-  providers: [],
+  providers: [HWTPService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

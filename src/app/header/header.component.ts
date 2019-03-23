@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HWTPService } from '../hwtp.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  summ = 0;
+  amount = 0;
+
+  constructor(private hwtpService: HWTPService) {
+
+    hwtpService.summ.subscribe((n: number) => {
+      this.summ = n;
+    });
+
+    hwtpService.amount.subscribe((n: number) => {
+      this.amount = n;
+    });
+   }
+
 
   ngOnInit() {
   }

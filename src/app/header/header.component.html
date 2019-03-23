@@ -1,10 +1,10 @@
 
 <mat-toolbar class="main">
-    <span [routerLink]="[ '/' ]" class="title">Home Work Transfer Protocol</span>
+    <h1 [routerLink]="[ '/' ]" class="title">Home Work Transfer Protocol</h1>
     <mat-toolbar class="cart" [routerLink]="[ '/shopping-cart' ]">
         <img src="../../assets/seo-56-512.png" alt="">
-        <span>Куплено: 10</span>
-        <span>На сумму: 200 грн</span>
+        <span>Куплено: {{amount}}</span>
+        <span>На сумму: {{summ}} грн</span>
     </mat-toolbar>
 
 

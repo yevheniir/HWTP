@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatCheckboxModule,
     MatCardModule,
+    MatStepperModule,
   ],
   exports: [
     MatToolbarModule,
@@ -31,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatCheckboxModule,
     MatCardModule,
+    MatStepperModule,
   ]
 })
 export class MaterialModule { }
