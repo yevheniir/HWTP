@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  readyForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
+    this.readyForm = fb.group({
+      check: [false, Validators.required],
+    });
   }
 
+  ngOnInit() {
+
+  }
 }

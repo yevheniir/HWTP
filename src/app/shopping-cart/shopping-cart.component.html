@@ -1,3 +1,56 @@
-<p>
-  shopping-cart works!
-</p>
+<mat-horizontal-stepper #stepper linear>
+  <mat-step [stepControl]="readyForm">
+    <ng-template matStepLabel>Прочитать правила</ng-template>
+
+    <mat-card>
+        <mat-card-title>Правила и предостережения</mat-card-title>
+        <mat-card-content>ТУт будет много текста</mat-card-content>
+        <form [formGroup]="readyForm">
+            <mat-checkbox formControlName="check" required>Я все осознал и готов продолжить</mat-checkbox>
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button matStepperNext>Next</button>
+        </mat-card-actions>
+    </mat-card>
+
+  </mat-step>
+  <mat-step [stepControl]="true">
+    <ng-template matStepLabel>Подтвердить заказ</ng-template>
+
+    <mat-card>
+        <mat-card-title>Правила и предостережения</mat-card-title>
+        <mat-card-content>ТУт будет много текста</mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button matStepperPrevious>Prev</button>
+            <button mat-button matStepperNext>Next</button>
+        </mat-card-actions>
+    </mat-card>
+
+  </mat-step>
+  <mat-step [stepControl]="true">
+      <ng-template matStepLabel>Оплатить заказ</ng-template>
+
+      <mat-card>
+          <mat-card-title>Правила и предостережения</mat-card-title>
+          <mat-card-content>ТУт будет много текста</mat-card-content>
+          <mat-card-actions align="end">
+              <button mat-button matStepperPrevious>Prev</button>
+              <button mat-button matStepperNext>Next</button>
+          </mat-card-actions>
+      </mat-card>
+
+    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Ждать свой дз</ng-template>
+
+    <mat-card>
+        <mat-card-title>Правила и предостережения</mat-card-title>
+        <mat-card-content>ТУт будет много текста</mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </mat-card-actions>
+    </mat-card>
+
+  </mat-step>
+</mat-horizontal-stepper>

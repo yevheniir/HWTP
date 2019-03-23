@@ -9,6 +9,7 @@ import { StuffListComponent } from './stuff-list/stuff-list.component';
 import { StuffComponent } from './stuff/stuff.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
@@ -31,6 +32,8 @@ import { HWTPService } from './hwtp.service';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [HWTPService],
   bootstrap: [AppComponent]

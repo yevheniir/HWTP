@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCheckboxModule,
     MatCardModule,
     MatStepperModule,
+    MatButtonModule,
   ],
   exports: [
     MatToolbarModule,
@@ -34,6 +36,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCheckboxModule,
     MatCardModule,
     MatStepperModule,
+    MatButtonModule,
   ]
 })
 export class MaterialModule { }
