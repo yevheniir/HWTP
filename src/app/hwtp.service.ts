@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Stuff } from './stuff';
 import { Subject } from 'rxjs';
-import { scan } from 'rxjs/operators';
 import { EventHandler } from './EventHandler';
 import { Event } from './Event';
 import { StuffReducer } from './reducers/stuffReducer';
@@ -20,22 +19,16 @@ export class HWTPService {
     {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 6, price: 10, id: 6}
   ];
 
-  // buyedStuff = new Set<Stuff>([]);
-
   buyedStuff = new Subject();
-
   summ = new Subject();
   amount = new Subject();
   buyedStuffHandler = new EventHandler(this.buyedStuff, new StuffReducer());
 
   constructor() {
-    // this.buyedStuffHandler.use(new Event('ADD_ALL', []));
-
     this.refreshStats();
    }
 
   buyStuff(stuff: Stuff, checked: boolean) {
-    console.log(stuff, checked);
     if (checked) {
       this.buyedStuffHandler.use(new Event('ADD', stuff));
     } else {
@@ -50,5 +43,10 @@ export class HWTPService {
     }, 0));
 
     this.amount.next(this.buyedStuffHandler.getArray().length);
+  }
+
+  cancelBuy(stuff: Stuff) {
+    this.buyedStuffHandler.use(new Event('DELETE', stuff));
+    this.refreshStats();
   }
 }

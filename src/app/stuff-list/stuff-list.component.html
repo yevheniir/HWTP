@@ -3,80 +3,71 @@
   <mat-form-field>
     <input class="filter-input" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
-<div class="parent-table mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+  <div class="parent-table mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
 
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()"
-                          [aria-label]="checkboxLabel()">
-            </mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="toggleStuff(row, $event) "
-                          [checked]="buyedStuff.includes(row) || selection.isSelected(row)"
-                          [aria-label]="checkboxLabel(row)">
-            </mat-checkbox>
-          </td>
-          <td mat-footer-cell *matFooterCellDef> Total </td>
-        </ng-container>
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="toggleStuff(row, $event) "
+                            [checked]="buyedStuff.includes(row) || selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="subject">
-          <th mat-header-cell *matHeaderCellDef> Subject </th>
-          <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="subject">
+            <th mat-header-cell *matHeaderCellDef> Subject </th>
+            <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+          </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="teacher">
-          <th mat-header-cell *matHeaderCellDef> Teacher </th>
-          <td mat-cell *matCellDef="let element"> {{element.teacher}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="teacher">
+            <th mat-header-cell *matHeaderCellDef> Teacher </th>
+            <td mat-cell *matCellDef="let element"> {{element.teacher}} </td>
+          </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="cource">
-          <th mat-header-cell *matHeaderCellDef> Cource </th>
-          <td mat-cell *matCellDef="let element"> {{element.cource}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="cource">
+            <th mat-header-cell *matHeaderCellDef> Cource </th>
+            <td mat-cell *matCellDef="let element"> {{element.cource}} </td>
+          </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="semester">
-          <th mat-header-cell *matHeaderCellDef> Semester </th>
-          <td mat-cell *matCellDef="let element"> {{element.semester}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="semester">
+            <th mat-header-cell *matHeaderCellDef> Semester </th>
+            <td mat-cell *matCellDef="let element"> {{element.semester}} </td>
+          </ng-container>
 
-        <ng-container matColumnDef="lab">
-          <th mat-header-cell *matHeaderCellDef> Lab </th>
-          <td mat-cell *matCellDef="let element"> {{element.lab}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <ng-container matColumnDef="lab">
+            <th mat-header-cell *matHeaderCellDef> Lab </th>
+            <td mat-cell *matCellDef="let element"> {{element.lab}} </td>
+          </ng-container>
 
-        <ng-container matColumnDef="exercise">
-          <th mat-header-cell *matHeaderCellDef> Exercise </th>
-          <td mat-cell *matCellDef="let element"> {{element.exercise}} </td>
-          <td mat-footer-cell *matFooterCellDef>  </td>
-        </ng-container>
+          <ng-container matColumnDef="exercise">
+            <th mat-header-cell *matHeaderCellDef> Exercise </th>
+            <td mat-cell *matCellDef="let element"> {{element.exercise}} </td>
+          </ng-container>
 
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price </th>
-          <td mat-cell *matCellDef="let element"> {{element.price | currency:'UAH':'symbol-narrow'}} </td>
-          <td mat-footer-cell *matFooterCellDef> {{summ | currency:'UAH':'symbol-narrow'}} </td>
-        </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price | currency:'UAH':'symbol-narrow'}} </td>
+          </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="toggleStuff(row)"></tr>
-        <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
-      </table>
-</div>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              (click)="toggleStuff(row)"></tr>
+        </table>
+  </div>
 
 </div>
 

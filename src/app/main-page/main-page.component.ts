@@ -11,15 +11,11 @@ export class MainPageComponent implements OnInit {
 
   stuff: Stuff[];
   buyedStuff = [];
-  summ = 0;
 
   constructor(private hwtpService: HWTPService) {
     this.stuff = this.hwtpService.stuff;
 
-    hwtpService.summ.subscribe((n: number) => {
-      this.summ = n;
-    });
-
+    this.buyedStuff = hwtpService.buyedStuffHandler.getArray();
     hwtpService.buyedStuff.subscribe((n: any) => {
       this.buyedStuff = n;
     });

@@ -1,0 +1,25 @@
+.mat-card {
+  overflow: auto;
+  height: calc(100vh - 64px - 72px - 32px - 24px);
+  text-align: center;
+}
+
+.example-form {
+  min-width: 150px;
+  // max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  margin: 0 0 30px 0;
+  width: 100%;
+}
+
+a.button {
+  background-color: rgb(189, 27, 27);
+  margin: 15px 0;
+}
+
+.file {
+  margin: 30px;
+}

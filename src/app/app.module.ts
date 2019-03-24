@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FilterComponent } from './filter/filter.component';
 import { HWTPService } from './hwtp.service';
+import { BuyedStuffListComponent } from './buyed-stuff-list/buyed-stuff-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HWTPService } from './hwtp.service';
     MainPageComponent,
     ShoppingCartComponent,
     FilterComponent,
+    BuyedStuffListComponent,
   ],
   imports: [
     BrowserAnimationsModule,

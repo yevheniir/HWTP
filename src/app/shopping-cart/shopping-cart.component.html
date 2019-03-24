@@ -1,5 +1,5 @@
 <mat-horizontal-stepper #stepper linear>
-  <mat-step [stepControl]="readyForm">
+  <mat-step [stepControl]="readyForm" [editable]="isEditable">
     <ng-template matStepLabel>Прочитать правила</ng-template>
 
     <mat-card>
@@ -9,46 +9,67 @@
             <mat-checkbox formControlName="check" required>Я все осознал и готов продолжить</mat-checkbox>
         </form>
         <mat-card-actions align="end">
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext>Далее</button>
         </mat-card-actions>
     </mat-card>
 
   </mat-step>
-  <mat-step [stepControl]="true">
+  <mat-step [editable]="isEditable">
     <ng-template matStepLabel>Подтвердить заказ</ng-template>
 
     <mat-card>
-        <mat-card-title>Правила и предостережения</mat-card-title>
-        <mat-card-content>ТУт будет много текста</mat-card-content>
+
+        <app-buyed-stuff-list [stuff]="buyedStuff" (delete)="cancelBuy($event)"></app-buyed-stuff-list>
+
         <mat-card-actions align="end">
-            <button mat-button matStepperPrevious>Prev</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Назад</button>
+            <button mat-button matStepperNext>Далее</button>
         </mat-card-actions>
     </mat-card>
 
   </mat-step>
-  <mat-step [stepControl]="true">
-      <ng-template matStepLabel>Оплатить заказ</ng-template>
+  <mat-step [stepControl]="payForm" [editable]="isEditable">
+    <ng-template matStepLabel>Оплатить заказ</ng-template>
 
-      <mat-card>
-          <mat-card-title>Правила и предостережения</mat-card-title>
-          <mat-card-content>ТУт будет много текста</mat-card-content>
-          <mat-card-actions align="end">
-              <button mat-button matStepperPrevious>Prev</button>
-              <button mat-button matStepperNext>Next</button>
-          </mat-card-actions>
-      </mat-card>
+    <mat-card>
+
+      <form class="example-form" [formGroup]="payForm">
+        <mat-card-title>Оплатить свой заказ</mat-card-title>
+        <a mat-button href="http://google.com" class="button" target="blank">Оплатить</a>
+
+        <mat-card-title>Загрузи скриншот своей оплаты</mat-card-title>
+        <div class="file">
+            <input formControlName="screen" mat-button class="ng-hide" id="input-file-id" multiple type="file" />
+        </div>
+
+        <mat-card-title>Укажите email</mat-card-title>
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="email" placeholder="Поле для почты">
+        </mat-form-field>
+
+
+        <mat-card-title>Напиши комментарий (не обязательно)</mat-card-title>
+        <mat-form-field class="example-full-width">
+          <textarea formControlName="comment" matInput placeholder="Поле для комментария"></textarea>
+        </mat-form-field>
+      </form>
+
+      <mat-card-actions align="end">
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button matStepperNext (click)="isEditable = false">Завершить</button>
+      </mat-card-actions>
+    </mat-card>
 
     </mat-step>
   <mat-step>
     <ng-template matStepLabel>Ждать свой дз</ng-template>
 
     <mat-card>
-        <mat-card-title>Правила и предостережения</mat-card-title>
-        <mat-card-content>ТУт будет много текста</mat-card-content>
+        <mat-card-title>Покупка завершена</mat-card-title>
+        <mat-card-content>Заказ отправлен на валидацию, если оплата прошла успешно дз прийдет на указаную почта ближе к вечеру.</mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button [routerLink]="['/']">На главную</button>
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
         </mat-card-actions>
     </mat-card>
 

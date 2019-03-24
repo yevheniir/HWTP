@@ -19,9 +19,6 @@ export class StuffListComponent implements OnInit {
   @Input()
   buyedStuff = [];
 
-  @Input()
-  summ: number;
-
   @Output() buyStuff = new EventEmitter<object>();
 
   displayedColumns: string[] = ['select', 'subject', 'teacher', 'cource', 'semester', 'lab', 'exercise', 'price'];
