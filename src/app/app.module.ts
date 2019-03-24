@@ -16,6 +16,10 @@ import { MaterialModule } from './material/material.module';
 import { FilterComponent } from './filter/filter.component';
 import { HWTPService } from './hwtp.service';
 import { BuyedStuffListComponent } from './buyed-stuff-list/buyed-stuff-list.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { AdminStuffCreatorComponent } from './admin-stuff-creator/admin-stuff-creator.component';
+import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-manager.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { BuyedStuffListComponent } from './buyed-stuff-list/buyed-stuff-list.com
     ShoppingCartComponent,
     FilterComponent,
     BuyedStuffListComponent,
+    AdminPanelComponent,
+    AdminOrdersComponent,
+    AdminStuffCreatorComponent,
+    AdminStuffManagerComponent,
   ],
   imports: [
     BrowserAnimationsModule,

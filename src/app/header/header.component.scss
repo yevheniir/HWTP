@@ -1,6 +1,6 @@
 .main {
   display: grid;
-  grid-template-columns: 6fr 2fr;
+  grid-template-columns: 1fr 6fr 2fr;
 }
 
 .title {
@@ -25,4 +25,7 @@ img {
   }
 }
 
-
+p {
+  cursor: pointer;
+  margin: 0;
+}
