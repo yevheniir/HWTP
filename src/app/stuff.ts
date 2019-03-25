@@ -1,7 +1,7 @@
 export interface Stuff {
   subject: string;
   teacher: string;
-  cource: number;
+  course: number;
   semester: number;
   lab: number;
   exercise: number;

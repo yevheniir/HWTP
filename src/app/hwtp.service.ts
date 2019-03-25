@@ -1,32 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Stuff } from './stuff';
-import { Subject } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { EventHandler } from './EventHandler';
 import { Event } from './Event';
 import { StuffReducer } from './reducers/stuffReducer';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HWTPService {
 
-  stuff: Stuff[] = [
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 1, price: 10, id: 1},
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 2, price: 10, id: 2},
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 3, price: 10, id: 3},
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 4, price: 10, id: 4},
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 5, price: 10, id: 5},
-    {subject: 'Java', teacher: 'Марченко', cource: 3, semester: 2, lab: 1, exercise: 6, price: 10, id: 6}
-  ];
-
+  // tslint:disable-next-line:variable-name
+  private _stuff: Subject<Stuff[]>;
   buyedStuff = new Subject();
   summ = new Subject();
   amount = new Subject();
+  stuffHandler: EventHandler;
   buyedStuffHandler = new EventHandler(this.buyedStuff, new StuffReducer());
 
-  constructor() {
-    this.refreshStats();
-   }
+  constructor(private httpClient: HttpClient) { }
+
+  get stuff(): Observable<Stuff[]> {
+    if (!this._stuff) {
+      this._stuff = new BehaviorSubject<Stuff[]>([]);
+      this.stuffHandler = new EventHandler(this._stuff, new StuffReducer());
+      this.httpClient.get('http://localhost:8080/stuff').subscribe((stuff) => {
+        this.stuffHandler.use(new Event('ADD_ALL', stuff));
+        this.refreshStats();
+      });
+    }
+    return this._stuff;
+  }
 
   buyStuff(stuff: Stuff, checked: boolean) {
     if (checked) {

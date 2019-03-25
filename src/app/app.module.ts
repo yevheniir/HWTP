@@ -20,6 +20,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminStuffCreatorComponent } from './admin-stuff-creator/admin-stuff-creator.component';
 import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-manager.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-ma
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [HWTPService],
   bootstrap: [AppComponent]

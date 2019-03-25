@@ -14,7 +14,7 @@ export class BuyedStuffListComponent implements OnInit {
 
   @Output() delete = new EventEmitter<object>();
 
-  displayedColumns: string[] = ['subject', 'teacher', 'cource', 'semester', 'lab', 'exercise', 'price', 'remove'];
+  displayedColumns: string[] = ['subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price', 'remove'];
   dataSource: any;
 
   constructor() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Stuff } from '../stuff';
@@ -9,7 +9,7 @@ import { Stuff } from '../stuff';
   templateUrl: './stuff-list.component.html',
   styleUrls: ['./stuff-list.component.scss']
 })
-export class StuffListComponent implements OnInit {
+export class StuffListComponent implements OnInit, OnChanges {
 
   constructor() { }
 
@@ -21,13 +21,22 @@ export class StuffListComponent implements OnInit {
 
   @Output() buyStuff = new EventEmitter<object>();
 
-  displayedColumns: string[] = ['select', 'subject', 'teacher', 'cource', 'semester', 'lab', 'exercise', 'price'];
+  displayedColumns: string[] = ['select', 'subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price'];
   dataSource: any;
   selection: any;
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Stuff>(this.stuff);
+    console.log('stuff list', this.stuff);
+    // this.dataSource = new MatTableDataSource<Stuff>(this.stuff);
     this.selection = new SelectionModel<Stuff>(true, []);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const stuff: SimpleChange = changes.stuff;
+
+    if (stuff && stuff.previousValue !== stuff.currentValue) {
+      this.dataSource = new MatTableDataSource<Stuff>(stuff.currentValue);
+    }
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
