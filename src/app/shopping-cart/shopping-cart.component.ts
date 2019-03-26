@@ -1,7 +1,10 @@
 import { Stuff } from './../stuff';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HWTPService } from '../hwtp.service';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+
+const URL = 'http://localhost:8080/orders/screen';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,7 +17,9 @@ export class ShoppingCartComponent implements OnInit {
   payForm: FormGroup;
   buyedStuff: Stuff[] = [];
 
-  constructor(private fb: FormBuilder, private hwtpService: HWTPService) {
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+
+  constructor(private fb: FormBuilder, private hwtpService: HWTPService, private cd: ChangeDetectorRef) {
     this.readyForm = fb.group({
       check: [false, Validators.required],
     });
@@ -32,9 +37,23 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+         console.log('ImageUpload:uploaded:', item, status, response);
+     };
   }
 
   cancelBuy(stuff: Stuff) {
     this.hwtpService.cancelBuy(stuff);
   }
+
+  addOrder() {
+    this.isEditable = false;
+
+    this.hwtpService.addOrder(this.payForm.value).subscribe((res) => {
+      this.uploader.uploadAll();
+    });
+    // this.hwtpService.addOrder(this.payForm);
+  }
+
 }

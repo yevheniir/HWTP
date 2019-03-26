@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HWTPService } from '../hwtp.service';
 import { Stuff } from '../stuff';
 
@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
   stuff: Stuff[];
   buyedStuff = [];
 
-  constructor(private hwtpService: HWTPService, private ref: ChangeDetectorRef) {
+  constructor(private hwtpService: HWTPService) {
     try {
     this.stuff = hwtpService.stuffHandler.getArray();
     } catch {}

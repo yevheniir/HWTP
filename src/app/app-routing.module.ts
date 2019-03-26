@@ -8,12 +8,12 @@ import { AdminStuffCreatorComponent } from './admin-stuff-creator/admin-stuff-cr
 import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-manager.component';
 
 const routes: Routes = [
-  { path: 'admin-panel/orders', component: AdminOrdersComponent},
-  { path: 'admin-panel/stuff-creator', component: AdminStuffCreatorComponent},
-  { path: 'admin-panel/stuff-manager', component: AdminStuffManagerComponent},
-  { path: 'admin-panel', component: AdminPanelComponent},
+  { path: 'admin-panel', component: AdminPanelComponent, children: [
+    { path: 'orders', component: AdminOrdersComponent},
+    { path: 'stuff-creator', component: AdminStuffCreatorComponent},
+    { path: 'stuff-manager', component: AdminStuffManagerComponent},
+  ]},
   { path: 'shopping-cart', component: ShoppingCartComponent},
-  { path: 'admin-panel', component: AdminPanelComponent},
   { path: '**', component: MainPageComponent},
 ];
 

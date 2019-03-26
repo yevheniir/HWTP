@@ -38,10 +38,14 @@
         <mat-card-title>Оплатить свой заказ</mat-card-title>
         <a mat-button href="http://google.com" class="button" target="blank">Оплатить</a>
 
+
         <mat-card-title>Загрузи скриншот своей оплаты</mat-card-title>
         <div class="file">
-            <input formControlName="screen" mat-button class="ng-hide" id="input-file-id" multiple type="file" />
+            <input formControlName="screen" mat-button class="ng-hide" id="input-file-id"
+            ng2FileSelect [uploader]="uploader"
+            multiple type="file" />
         </div>
+
 
         <mat-card-title>Укажите email</mat-card-title>
         <mat-form-field class="example-full-width">
@@ -57,7 +61,7 @@
 
       <mat-card-actions align="end">
         <button mat-button matStepperPrevious>Назад</button>
-        <button mat-button matStepperNext (click)="isEditable = false">Завершить</button>
+        <button mat-button matStepperNext (click)="addOrder()">Завершить</button>
       </mat-card-actions>
     </mat-card>
 

@@ -54,4 +54,12 @@ export class HWTPService {
     this.buyedStuffHandler.use(new Event('DELETE', stuff));
     this.refreshStats();
   }
+
+  addOrder(order: any): Observable<Object> {
+    order.stuffs = this.buyedStuffHandler.getArray();
+    this.buyedStuffHandler.use(new Event('ADD_ALL', []));
+    this.refreshStats();
+    console.log(order);
+    return this.httpClient.post('http://localhost:8080/orders', order);
+  }
 }

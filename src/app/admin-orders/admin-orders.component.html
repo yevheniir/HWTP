@@ -1,3 +1,27 @@
-<p>
-  admin-orders works!
-</p>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let order of orders; let i=index">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{order.email}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{order.comment}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="content">
+      <!-- <p>{{order.screen}}</p> -->
+      <img src="http://localhost:8080/image-response-entity" alt="">
+
+      <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
+    </div>
+    <div class="buttons">
+      <h3>Общая сумма заказа: {{summs[i]}}</h3>
+      <button mat-button >Комментировать</button>
+      <button mat-button >Подтвердить</button>
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>
+

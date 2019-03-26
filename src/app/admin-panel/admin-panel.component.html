@@ -1,3 +1,23 @@
-<p>
-  admin-panel works!
-</p>
+<div class="main">
+  <div>
+      <mat-button-toggle-group [(ngModel)]="currentRoute" name="adminRouter" vertical>
+          <mat-button-toggle
+          [routerLink]="[ 'orders' ]" value="/admin-panel/orders">Посмотреть заказы</mat-button-toggle>
+
+          <mat-button-toggle
+          [routerLink]="[ 'stuff-creator' ]" value="/admin-panel/stuff-creator">Добавить новый продукт</mat-button-toggle>
+
+          <mat-button-toggle
+          [routerLink]="[ 'stuff-manager' ]" value="/admin-panel/stuff-manager">Управлять имеющимися продуктами</mat-button-toggle>
+
+        </mat-button-toggle-group>
+  </div>
+
+  <ng-container [ngSwitch]="true">
+      <div *ngSwitchCase="currentRoute == '/admin-panel/orders'"><app-admin-orders [orders]="orders"></app-admin-orders></div>
+      <div *ngSwitchCase="currentRoute == '/admin-panel/stuff-creator'"><app-admin-stuff-creator></app-admin-stuff-creator></div>
+      <div *ngSwitchDefault><app-admin-stuff-manager></app-admin-stuff-manager></div>
+  </ng-container>
+</div>
+
+

@@ -10,6 +10,7 @@ import { StuffComponent } from './stuff/stuff.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminOrdersComponent,
     AdminStuffCreatorComponent,
     AdminStuffManagerComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserAnimationsModule,

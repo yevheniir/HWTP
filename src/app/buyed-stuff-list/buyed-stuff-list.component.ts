@@ -12,9 +12,13 @@ export class BuyedStuffListComponent implements OnInit {
   @Input()
   stuff: Stuff[];
 
+  @Input()
+  removable = true;
+
   @Output() delete = new EventEmitter<object>();
 
-  displayedColumns: string[] = ['subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price', 'remove'];
+  displayedColumns: string[];
+
   dataSource: any;
 
   constructor() {
@@ -22,6 +26,10 @@ export class BuyedStuffListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Stuff>(this.stuff);
+
+    this.displayedColumns = this.removable ?
+    ['subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price', 'remove']
+    : ['subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price'];
   }
 
   deleteStuff(stuff: Stuff) {
