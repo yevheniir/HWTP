@@ -1,27 +1,31 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let order of orders; let i=index">
+<div class="main">
+  <mat-accordion class="parent-table">
+    <mat-expansion-panel *ngFor="let order of orders; let i=index">
 
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{order.email}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{order.comment}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{order.email}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{order.comment}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-    <div class="content">
-      <!-- <p>{{order.screen}}</p> -->
-      <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:8080/image-response-entity/{{order.screen}}" alt="">
+      <div class="content">
+        <!-- <p>{{order.screen}}</p> -->
+        <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:8080/image-response-entity/{{order.screen}}" alt="">
 
-      <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
-    </div>
-    <div class="buttons">
-      <h3>Общая сумма заказа: {{summs[i]}}</h3>
-      <button mat-button >Комментировать</button>
-      <button mat-button (click)="deleteOrder(order)" >Подтвердить</button>
-    </div>
-  </mat-expansion-panel>
+        <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
+      </div>
+      <div class="buttons">
+        <h3>Общая сумма заказа: {{summs[i]}}</h3>
+        <button mat-button (click)="cancelOrder(order)" >Отказать</button>
+        <button mat-button (click)="commentOrder(order)">Комментировать</button>
+        <button mat-button (click)="deleteOrder(order)" >Подтвердить</button>
+      </div>
+    </mat-expansion-panel>
 
-</mat-accordion>
+  </mat-accordion>
+</div>
+
 

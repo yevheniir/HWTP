@@ -22,6 +22,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminStuffCreatorComponent } from './admin-stuff-creator/admin-stuff-creator.component';
 import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-manager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentPopupComponent } from './comment-popup/comment-popup.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminStuffCreatorComponent,
     AdminStuffManagerComponent,
     FileSelectDirective,
+    CommentPopupComponent,
   ],
   imports: [
     BrowserAnimationsModule,

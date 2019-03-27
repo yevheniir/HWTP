@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { Stuff } from '../stuff';
+import { MatDialog } from '@angular/material';
+import { CommentPopupComponent } from '../comment-popup/comment-popup.component';
 
 @Component({
   selector: 'app-admin-orders',
@@ -13,13 +15,17 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
 
   @Output() delete = new EventEmitter<object>();
 
+  @Output() cancel = new EventEmitter<object>();
+
+  @Output() comment = new EventEmitter<object>();
+
   summs = [];
 
   fullVersion = false;
 
   panelOpenState = false;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -33,8 +39,18 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
           return a + b.price;
         }, 0));
       });
-      console.log(this.summs);
     }
+  }
+
+  openDialog(order: any): void {
+    const dialogRef = this.dialog.open(CommentPopupComponent, {
+      width: '250px',
+      data: {order, comment: ''}
+    });
+
+    dialogRef.afterClosed().subscribe(comment => {
+      this.comment.emit({order, comment});
+    });
   }
 
   switchScreen() {
@@ -45,4 +61,14 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
     this.delete.emit(order);
   }
 
+  cancelOrder(order: any) {
+    this.cancel.emit(order);
+  }
+
+  commentOrder(order: any) {
+    this.openDialog(order);
+  }
+
 }
+
+

@@ -14,9 +14,14 @@
   </div>
 
   <ng-container [ngSwitch]="true">
-      <div *ngSwitchCase="currentRoute == '/admin-panel/orders'"><app-admin-orders [orders]="orders" (delete)="deleteOrder($event)"></app-admin-orders></div>
-      <div *ngSwitchCase="currentRoute == '/admin-panel/stuff-creator'"><app-admin-stuff-creator></app-admin-stuff-creator></div>
-      <div *ngSwitchDefault><app-admin-stuff-manager [stuff]="stuff" (delete)="deleteStuff($event)"></app-admin-stuff-manager></div>
+      <div *ngSwitchCase="currentRoute == '/admin-panel/orders'">
+        <app-admin-orders [orders]="orders" (delete)="deleteOrder($event)"
+                                            (cancel)="cancelOrder($event)"
+                                            (comment)="commentOrder($event)"></app-admin-orders></div>
+      <div *ngSwitchCase="currentRoute == '/admin-panel/stuff-creator'">
+        <app-admin-stuff-creator></app-admin-stuff-creator></div>
+      <div *ngSwitchDefault><app-admin-stuff-manager [stuff]="stuff" (delete)="deleteStuff($event)">
+      </app-admin-stuff-manager></div>
   </ng-container>
 </div>
 

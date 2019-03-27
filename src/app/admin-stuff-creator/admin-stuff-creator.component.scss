@@ -1,0 +1,52 @@
+.form {
+  display: grid;
+  grid-template-areas:
+  '. file file . '
+  'subject subject teacher teacher '
+  'course semester lab exercise '
+  'price . . submit';
+
+  gap: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+
+  .file-input {
+    grid-area: file;
+  }
+
+  .input-subject {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-area: subject;
+  }
+
+  .input-tescher {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-area: teacher;
+  }
+
+  .input-course {
+    grid-area: course;
+  }
+
+  .input-semester {
+    grid-area: semester;
+  }
+
+  .input-lab {
+    grid-area: lab;
+  }
+
+  .input-exercise {
+    grid-area: exercise;
+  }
+
+  .input-price {
+    grid-area: price;
+  }
+
+  .submit {
+    grid-area: submit;
+  }
+}

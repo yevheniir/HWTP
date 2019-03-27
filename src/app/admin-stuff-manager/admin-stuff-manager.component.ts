@@ -4,7 +4,7 @@ import { Stuff } from '../stuff';
 @Component({
   selector: 'app-admin-stuff-manager',
   templateUrl: './admin-stuff-manager.component.html',
-  styleUrls: ['./admin-stuff-manager.component.sass']
+  styleUrls: ['./admin-stuff-manager.component.scss']
 })
 export class AdminStuffManagerComponent implements OnInit {
 

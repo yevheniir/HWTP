@@ -1,25 +1,25 @@
 <div class="main">
 
-  <form class="example-form" [formGroup]="stuffForm">
-    <input formControlName="file" mat-button class="ng-hide" id="input-file-id"
+  <form class="form" [formGroup]="stuffForm">
+    <input formControlName="file" mat-button class="file-input"
     ng2FileSelect [uploader]="uploader"
-    multiple type="file" />
+     type="file" />
 
     <div class="input-subject">
         <mat-card-title>Укажите название предмета</mat-card-title>
-        <mat-form-field class="example-full-width">
+        <mat-form-field >
             <input matInput formControlName="subject" placeholder="Предмет">
         </mat-form-field>
     </div>
 
     <div class="input-tescher">
         <mat-card-title>Укажите преподавателя</mat-card-title>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
             <input matInput formControlName="teacher" placeholder="Преподаватель">
         </mat-form-field>
     </div>
 
-    <mat-form-field>
+    <mat-form-field class="input-course">
       <mat-label>Курс</mat-label>
       <mat-select formControlName="course">
         <mat-option *ngFor="let course of courses" [value]="course">
@@ -28,7 +28,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="input-semester">
       <mat-label>Семестер</mat-label>
       <mat-select formControlName="semester">
         <mat-option *ngFor="let semester of semesters" [value]="semester">
@@ -37,19 +37,19 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input-lab">
         <input type="number" matInput formControlName="lab" placeholder="Лабораторная">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input-exercise">
         <input type="number" matInput formControlName="exercise" placeholder="Номер">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input-price">
         <input type="number" step = "10" matInput formControlName="price" placeholder="Цена">
     </mat-form-field>
 
-    <button mat-button (click)="addStuff()">Подтвердить</button>
+    <button mat-button class="submit" (click)="addStuff()">Подтвердить</button>
   </form>
 
 </div>

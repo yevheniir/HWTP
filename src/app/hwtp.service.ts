@@ -59,7 +59,6 @@ export class HWTPService {
     order.stuffs = this.buyedStuffHandler.getArray();
     this.buyedStuffHandler.use(new Event('ADD_ALL', []));
     this.refreshStats();
-    console.log(order);
     return this.httpClient.post('http://localhost:8080/orders', order);
   }
 

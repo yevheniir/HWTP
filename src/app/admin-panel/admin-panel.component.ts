@@ -48,4 +48,12 @@ export class AdminPanelComponent implements OnInit {
     this.adminService.deleteOrder(order);
   }
 
+  cancelOrder(order: any) {
+    this.adminService.cancelOrder(order);
+  }
+
+  commentOrder(obj: any) {
+    this.adminService.commentOrder(obj.order, obj.comment);
+  }
+
 }

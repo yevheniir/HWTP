@@ -8,7 +8,7 @@ const URL = 'http://localhost:8080/stuff/file';
 @Component({
   selector: 'app-admin-stuff-creator',
   templateUrl: './admin-stuff-creator.component.html',
-  styleUrls: ['./admin-stuff-creator.component.sass']
+  styleUrls: ['./admin-stuff-creator.component.scss']
 })
 export class AdminStuffCreatorComponent implements OnInit {
 
@@ -41,7 +41,6 @@ export class AdminStuffCreatorComponent implements OnInit {
   addStuff() {
     if (this.stuffForm.valid) {
       const stuff: any = this.stuffForm.value;
-      console.log(stuff);
       this.adminService.addStuff(stuff).subscribe((res) => {
         this.uploader.uploadAll();
       });
