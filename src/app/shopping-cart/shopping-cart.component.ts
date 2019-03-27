@@ -2,7 +2,7 @@ import { Stuff } from './../stuff';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HWTPService } from '../hwtp.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
 const URL = 'http://localhost:8080/orders/screen';
 
@@ -19,7 +19,7 @@ export class ShoppingCartComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
-  constructor(private fb: FormBuilder, private hwtpService: HWTPService, private cd: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder, private hwtpService: HWTPService) {
     this.readyForm = fb.group({
       check: [false, Validators.required],
     });

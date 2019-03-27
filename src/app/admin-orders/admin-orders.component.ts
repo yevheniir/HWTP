@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { Stuff } from '../stuff';
 
 @Component({
@@ -11,7 +11,11 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
   @Input()
   orders: any;
 
+  @Output() delete = new EventEmitter<object>();
+
   summs = [];
+
+  fullVersion = false;
 
   panelOpenState = false;
 
@@ -31,6 +35,14 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
       });
       console.log(this.summs);
     }
+  }
+
+  switchScreen() {
+    this.fullVersion = !this.fullVersion;
+  }
+
+  deleteOrder(order: any) {
+    this.delete.emit(order);
   }
 
 }

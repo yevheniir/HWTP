@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
+import { HWTPService } from '../hwtp.service';
+import { Stuff } from '../stuff';
 
 @Component({
   selector: 'app-admin-panel',
@@ -11,8 +13,9 @@ export class AdminPanelComponent implements OnInit {
 
   currentRoute: any;
   orders = [];
+  stuff = [];
 
-  constructor(private router: Router, private adminService: AdminService) { }
+  constructor(private router: Router, private adminService: AdminService, private hwtpService: HWTPService) { }
 
   ngOnInit() {
     this.currentRoute = this.router.url;
@@ -26,8 +29,23 @@ export class AdminPanelComponent implements OnInit {
 
     this.adminService.orders.subscribe((orders) => {
       this.orders = orders;
-      console.log(this.orders);
     });
+
+    try {
+      this.stuff = this.hwtpService.stuffHandler.getArray();
+    } catch {}
+
+    this.hwtpService.stuff.subscribe((stuff) => {
+      this.stuff = stuff;
+    });
+  }
+
+  deleteStuff(stuff: Stuff) {
+    this.adminService.deleteStuff(stuff);
+  }
+
+  deleteOrder(order: any) {
+    this.adminService.deleteOrder(order);
   }
 
 }

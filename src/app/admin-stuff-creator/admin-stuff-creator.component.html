@@ -1,3 +1,56 @@
-<p>
-  admin-stuff-creator works!
-</p>
+<div class="main">
+
+  <form class="example-form" [formGroup]="stuffForm">
+    <input formControlName="file" mat-button class="ng-hide" id="input-file-id"
+    ng2FileSelect [uploader]="uploader"
+    multiple type="file" />
+
+    <div class="input-subject">
+        <mat-card-title>Укажите название предмета</mat-card-title>
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="subject" placeholder="Предмет">
+        </mat-form-field>
+    </div>
+
+    <div class="input-tescher">
+        <mat-card-title>Укажите преподавателя</mat-card-title>
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="teacher" placeholder="Преподаватель">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Курс</mat-label>
+      <mat-select formControlName="course">
+        <mat-option *ngFor="let course of courses" [value]="course">
+          {{course}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Семестер</mat-label>
+      <mat-select formControlName="semester">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">
+          {{semester}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input type="number" matInput formControlName="lab" placeholder="Лабораторная">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input type="number" matInput formControlName="exercise" placeholder="Номер">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input type="number" step = "10" matInput formControlName="price" placeholder="Цена">
+    </mat-form-field>
+
+    <button mat-button (click)="addStuff()">Подтвердить</button>
+  </form>
+
+</div>
+

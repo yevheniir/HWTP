@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Stuff } from '../stuff';
 
@@ -7,7 +7,7 @@ import { Stuff } from '../stuff';
   templateUrl: './buyed-stuff-list.component.html',
   styleUrls: ['./buyed-stuff-list.component.scss']
 })
-export class BuyedStuffListComponent implements OnInit {
+export class BuyedStuffListComponent implements OnInit, OnChanges {
 
   @Input()
   stuff: Stuff[];
@@ -40,6 +40,14 @@ export class BuyedStuffListComponent implements OnInit {
     });
 
     this.dataSource = new MatTableDataSource<Stuff>(this.stuff);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const stuff: SimpleChange = changes.stuff;
+
+    if (stuff && stuff.previousValue !== stuff.currentValue) {
+      this.dataSource = new MatTableDataSource<Stuff>(stuff.currentValue);
+    }
   }
 
 }

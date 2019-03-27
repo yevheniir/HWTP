@@ -7,5 +7,7 @@ export interface Stuff {
   exercise: number;
   price: number;
   id: number;
+  file: string;
+  archive: boolean;
 }
 

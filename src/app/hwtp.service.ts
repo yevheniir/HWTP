@@ -62,4 +62,12 @@ export class HWTPService {
     console.log(order);
     return this.httpClient.post('http://localhost:8080/orders', order);
   }
+
+  deleteStuff(stuff: Stuff) {
+    this.stuffHandler.use(new Event('DELETE', stuff));
+  }
+
+  addStuff(stuff: Stuff) {
+    this.stuffHandler.use(new Event('ADD', stuff));
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Stuff } from '../stuff';
 
 @Component({
   selector: 'app-admin-stuff-manager',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminStuffManagerComponent implements OnInit {
 
+  @Input()
+  stuff = [];
+
+  @Output() delete = new EventEmitter<object>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  deleteStuff(stuff: Stuff) {
+    this.delete.emit(stuff);
+  }
 }

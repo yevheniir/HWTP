@@ -12,14 +12,14 @@
 
     <div class="content">
       <!-- <p>{{order.screen}}</p> -->
-      <img src="http://localhost:8080/image-response-entity" alt="">
+      <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:8080/image-response-entity/{{order.screen}}" alt="">
 
       <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
     </div>
     <div class="buttons">
       <h3>Общая сумма заказа: {{summs[i]}}</h3>
       <button mat-button >Комментировать</button>
-      <button mat-button >Подтвердить</button>
+      <button mat-button (click)="deleteOrder(order)" >Подтвердить</button>
     </div>
   </mat-expansion-panel>
 
