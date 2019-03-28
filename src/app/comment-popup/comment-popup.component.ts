@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-comment-popup',
   templateUrl: './comment-popup.component.html',
-  styleUrls: ['./comment-popup.component.sass']
+  styleUrls: ['./comment-popup.component.scss']
 })
 export class CommentPopupComponent {
   constructor(
@@ -16,7 +16,6 @@ export class CommentPopupComponent {
   }
 
 }
-
 
 export interface DialogData {
   order: string;

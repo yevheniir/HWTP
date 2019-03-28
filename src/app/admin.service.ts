@@ -18,9 +18,7 @@ export class AdminService {
   orderHandler: EventHandler;
 
   constructor(private httpClient: HttpClient, private hwtpService: HWTPService, private snackBar: MatSnackBar) {
-    setTimeout(() => {
-      this.snackBar.open('Старий продукт: ', 'Снят с продаж', {duration: 2000});
-    }, 2000);
+
    }
 
   get orders(): Observable<any[]> {
@@ -37,7 +35,7 @@ export class AdminService {
   }
 
   deleteStuff(stuff: Stuff) {
-    this.httpClient.delete(`http://localhost:8080/admin/stuff/${stuff.id}`).subscribe((res) => {
+    this.httpClient.delete(`http://localhost:8080/stuff/${stuff.id}`).subscribe((res) => {
       this.snackBar.open('Старий продукт: ', 'Снят с продаж', {duration: 2000});
 
       this.hwtpService.deleteStuff(stuff);

@@ -44,7 +44,7 @@ export class AdminOrdersComponent implements OnInit, OnChanges {
 
   openDialog(order: any): void {
     const dialogRef = this.dialog.open(CommentPopupComponent, {
-      width: '250px',
+      width: '500px',
       data: {order, comment: ''}
     });
 

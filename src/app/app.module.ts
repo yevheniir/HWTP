@@ -51,6 +51,9 @@ import { CommentPopupComponent } from './comment-popup/comment-popup.component';
     FormsModule,
     HttpClientModule,
   ],
+  entryComponents: [
+    CommentPopupComponent,
+  ],
   providers: [HWTPService],
   bootstrap: [AppComponent]
 })
