@@ -4,7 +4,8 @@ import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { EventHandler } from './EventHandler';
 import { Event } from './Event';
 import { StuffReducer } from './reducers/stuffReducer';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,11 @@ export class HWTPService {
     if (!this._stuff) {
       this._stuff = new BehaviorSubject<Stuff[]>([]);
       this.stuffHandler = new EventHandler(this._stuff, new StuffReducer());
-      this.httpClient.get('http://localhost:8080/stuff').subscribe((stuff) => {
+
+      const customHeaders: HttpHeaders = new HttpHeaders();
+      customHeaders.append('Cookie', 'SESSION=MjdiYzA2MWQtMmIwNi00NTRjLTgzNDgtYzQ3MTU5YjNmODBm');
+
+      this.httpClient.get('http://localhost:9090/stuff', { headers: customHeaders }).subscribe((stuff) => {
         this.stuffHandler.use(new Event('ADD_ALL', stuff));
         this.refreshStats();
       });
@@ -59,7 +64,7 @@ export class HWTPService {
     order.stuffs = this.buyedStuffHandler.getArray();
     this.buyedStuffHandler.use(new Event('ADD_ALL', []));
     this.refreshStats();
-    return this.httpClient.post('http://localhost:8080/orders', order);
+    return this.httpClient.post('http://localhost:9090/orders', order);
   }
 
   deleteStuff(stuff: Stuff) {

@@ -23,6 +23,7 @@ import { AdminStuffCreatorComponent } from './admin-stuff-creator/admin-stuff-cr
 import { AdminStuffManagerComponent } from './admin-stuff-manager/admin-stuff-manager.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentPopupComponent } from './comment-popup/comment-popup.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CommentPopupComponent } from './comment-popup/comment-popup.component';
     AdminStuffManagerComponent,
     FileSelectDirective,
     CommentPopupComponent,
+    PasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,

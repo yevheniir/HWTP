@@ -4,7 +4,7 @@ import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { AdminService } from '../admin.service';
 import { Stuff } from '../stuff';
 
-const URL = 'http://localhost:8080/stuff/file';
+const URL = 'http://localhost:9090/stuff/file';
 @Component({
   selector: 'app-admin-stuff-creator',
   templateUrl: './admin-stuff-creator.component.html',

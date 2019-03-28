@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HWTPService } from '../hwtp.service';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
-const URL = 'http://localhost:8080/orders/screen';
+const URL = 'http://localhost:9090/orders/screen';
 
 @Component({
   selector: 'app-shopping-cart',
