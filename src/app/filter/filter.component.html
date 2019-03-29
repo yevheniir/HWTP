@@ -7,5 +7,5 @@
         {{title}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-checkbox *ngFor="let item of items">{{item}}</mat-checkbox>
+    <mat-checkbox (change)="changeFilter($event, item)" *ngFor="let item of items">{{item}}</mat-checkbox>
 </mat-expansion-panel>

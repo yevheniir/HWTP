@@ -11,6 +11,7 @@ export class MainPageComponent implements OnInit {
 
   stuff: Stuff[];
   buyedStuff = [];
+  filter = new Map<any, any[]>();
 
   constructor(private hwtpService: HWTPService) {
     try {
@@ -25,6 +26,10 @@ export class MainPageComponent implements OnInit {
     hwtpService.buyedStuff.subscribe((n: any) => {
       this.buyedStuff = n;
     });
+
+    hwtpService.filter$.subscribe((f: any) => {
+      this.filter = f;
+    });
    }
 
   ngOnInit() {
@@ -32,6 +37,10 @@ export class MainPageComponent implements OnInit {
 
   buyStuff(e: any) {
     this.hwtpService.buyStuff(e.stuff, e.checked);
+  }
+
+  changeFilter(e: any) {
+    this.hwtpService.changeFilter(e);
   }
 
 }

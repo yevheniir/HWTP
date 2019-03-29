@@ -19,6 +19,9 @@ export class StuffListComponent implements OnInit, OnChanges {
   @Input()
   buyedStuff = [];
 
+  @Input()
+  filter: Map<any, any[]>;
+
   @Output() buyStuff = new EventEmitter<object>();
 
   displayedColumns: string[] = ['select', 'subject', 'teacher', 'course', 'semester', 'lab', 'exercise', 'price'];
@@ -26,27 +29,40 @@ export class StuffListComponent implements OnInit, OnChanges {
   selection: any;
 
   ngOnInit(): void {
-    console.log('stuff list', this.stuff);
-    // this.dataSource = new MatTableDataSource<Stuff>(this.stuff);
     this.selection = new SelectionModel<Stuff>(true, []);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     const stuff: SimpleChange = changes.stuff;
+    const filter: SimpleChange = changes.filter;
 
     if (stuff && stuff.previousValue !== stuff.currentValue) {
       this.dataSource = new MatTableDataSource<Stuff>(stuff.currentValue);
     }
+
+    if (filter && filter.previousValue !== filter.currentValue) {
+      const newDate = this.stuff.filter((element: Stuff) => {
+
+        let valid = false;
+
+        filter.currentValue.forEach((value: any[], key: string) => {
+          if (value.includes(element[key])) {
+            valid = true;
+          }
+        });
+        return valid;
+      });
+
+      this.dataSource = new MatTableDataSource<Stuff>(newDate);
+    }
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
         this.clearSelection() :
@@ -56,12 +72,11 @@ export class StuffListComponent implements OnInit, OnChanges {
         });
   }
 
-  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: Stuff): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`; //row ${row.position + 1}
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
   }
 
   toggleStuff(stuff: Stuff, e: any = null) {

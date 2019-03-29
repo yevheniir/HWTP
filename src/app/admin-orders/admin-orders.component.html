@@ -15,7 +15,7 @@
         <!-- <p>{{order.screen}}</p> -->
         <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:9090/image-response-entity/{{order.screen}}" alt="">
 
-        <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
+        <app-buyed-stuff-list class="stuff-list" [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
       </div>
       <div class="buttons">
         <h3>Общая сумма заказа: {{summs[i]}}</h3>

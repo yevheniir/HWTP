@@ -1,8 +1,8 @@
 
 <mat-card>
-    <app-filter [title]="courcesTitle" [items]="cources"></app-filter>
-    <app-filter [title]="subjectTitle" [items]="subjects"></app-filter>
-    <app-filter [title]="teacherTitle" [items]="teachers"></app-filter>
+    <app-filter [type]="'course'" [title]="courcesTitle" [items]="cources" (change)="changeFilter($event)"></app-filter>
+    <app-filter [type]="'subject'" [title]="subjectTitle" [items]="subjects" (change)="changeFilter($event)"></app-filter>
+    <app-filter [type]="'teacher'" [title]="teacherTitle" [items]="teachers" (change)="changeFilter($event)"></app-filter>
 </mat-card>
 
 

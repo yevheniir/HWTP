@@ -56,4 +56,8 @@ export class AdminPanelComponent implements OnInit {
     this.adminService.commentOrder(obj.order, obj.comment);
   }
 
+  exit() {
+    this.adminService.error(false);
+  }
+
 }

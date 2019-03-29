@@ -1,7 +1,7 @@
 
 <div class="main">
-    <app-filters></app-filters>
-    <app-stuff-list [buyedStuff]="buyedStuff" (buyStuff)="buyStuff($event)" [stuff]="stuff"></app-stuff-list>
+    <app-filters [stuff]="stuff" (change)="changeFilter($event)"></app-filters>
+    <app-stuff-list [buyedStuff]="buyedStuff" (buyStuff)="buyStuff($event)" [stuff]="stuff" [filter]="filter"></app-stuff-list>
 </div>
 
 

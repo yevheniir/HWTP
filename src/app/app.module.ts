@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './filters/filters.component';
 import { StuffListComponent } from './stuff-list/stuff-list.component';
-import { StuffComponent } from './stuff/stuff.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -31,7 +30,6 @@ import { PasswordComponent } from './password/password.component';
     HeaderComponent,
     FiltersComponent,
     StuffListComponent,
-    StuffComponent,
     MainPageComponent,
     ShoppingCartComponent,
     FilterComponent,

@@ -9,6 +9,7 @@ import { AdminService } from '../admin.service';
 export class PasswordComponent implements OnInit {
 
   password: string;
+  filter: any;
 
   constructor(private adminService: AdminService) { }
 

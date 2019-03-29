@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -9,10 +9,28 @@ export class FilterComponent implements OnInit {
 
   @Input() title: string;
   @Input() items: any[];
+  @Input() type: string;
 
-  constructor() { }
+  @Output() change = new EventEmitter<object>();
+
+  filter = {};
+
+  constructor() {
+   }
 
   ngOnInit() {
+    this.filter[this.type] = [];
+  }
+
+  changeFilter(event: any, item: any) {
+    if (event.checked) {
+      this.filter[this.type].push(item);
+    } else {
+      this.filter[this.type] = this.filter[this.type].filter((el: any) => {
+        return el != item;
+      });
+    }
+    this.change.emit(this.filter);
   }
 
 }

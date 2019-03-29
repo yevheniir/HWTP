@@ -11,7 +11,7 @@
             <mat-checkbox formControlName="check" required>Я все осознал и готов продолжить</mat-checkbox>
         </form>
         <mat-card-actions align="end">
-            <button mat-button matStepperNext>Далее</button>
+            <button mat-raised-button color="primary" matStepperNext>Далее</button>
         </mat-card-actions>
     </mat-card>
 
@@ -20,12 +20,11 @@
     <ng-template matStepLabel>Подтвердить заказ</ng-template>
 
     <mat-card>
-
         <app-buyed-stuff-list [stuff]="buyedStuff" (delete)="cancelBuy($event)"></app-buyed-stuff-list>
 
         <mat-card-actions align="end">
-            <button mat-button matStepperPrevious>Назад</button>
-            <button mat-button matStepperNext>Далее</button>
+            <button mat-raised-button color="primary" matStepperPrevious>Назад</button>
+            <button mat-raised-button color="primary" matStepperNext>Далее</button>
         </mat-card-actions>
     </mat-card>
 
@@ -37,12 +36,12 @@
 
       <form class="example-form" [formGroup]="payForm">
         <mat-card-title>Оплатить свой заказ</mat-card-title>
-        <a mat-button href="http://google.com" class="button" target="blank">Оплатить</a>
+        <a mat-raised-button color="primary" href="http://google.com" class="button" target="blank">Оплатить</a>
 
 
         <mat-card-title>Загрузи скриншот своей оплаты</mat-card-title>
         <div class="file">
-            <input formControlName="screen" mat-button class="ng-hide" id="input-file-id"
+            <input formControlName="screen" mat-raised-button color="primary" class="ng-hide" id="input-file-id"
             ng2FileSelect [uploader]="uploader"
             type="file" />
         </div>
@@ -61,8 +60,8 @@
       </form>
 
       <mat-card-actions align="end">
-        <button mat-button matStepperPrevious>Назад</button>
-        <button mat-button matStepperNext (click)="addOrder()">Завершить</button>
+        <button mat-raised-button color="primary" matStepperPrevious>Назад</button>
+        <button mat-raised-button color="primary" matStepperNext (click)="addOrder()">Завершить</button>
       </mat-card-actions>
 
     </mat-card>
@@ -75,8 +74,7 @@
         <mat-card-title>Покупка завершена</mat-card-title>
         <mat-card-content>Заказ отправлен на валидацию, если оплата прошла успешно дз прийдет на указаную почта ближе к вечеру.</mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button [routerLink]="['/']">На главную</button>
-            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+            <button mat-raised-button color="primary" [routerLink]="['/']">На главную</button>
         </mat-card-actions>
     </mat-card>
 

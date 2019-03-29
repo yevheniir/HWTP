@@ -8,7 +8,7 @@ import { Stuff } from './stuff';
 import { HWTPService } from './hwtp.service';
 import { scan, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 export class AdminService {
 
+  // tslint:disable-next-line:variable-name
   private _orders: Subject<any[]>;
   orderHandler: EventHandler;
   authorized: string;
@@ -30,6 +31,12 @@ export class AdminService {
         }, 0);
       }
     });
+
+    if (!localStorage['token']) {
+      localStorage['token'] = '';
+    } else {
+      this.authorized = localStorage['token'];
+    }
    }
 
   get orders(): Observable<any[]> {
@@ -43,8 +50,7 @@ export class AdminService {
       this.httpClient.get('http://localhost:9090/orders', {headers}).subscribe((orders) => {
         this.orderHandler.use(new Event('ADD_ALL', orders));
       }, (err) => {
-        this.authorized = null;
-        this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+        this.error();
       });
     }
 
@@ -59,8 +65,7 @@ export class AdminService {
       this.snackBar.open('Старий продукт: ', 'Снят с продаж', {duration: 2000});
       this.hwtpService.deleteStuff(stuff);
     }, (err) => {
-      this.authorized = null;
-      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+      this.error();
     });
   }
 
@@ -74,8 +79,7 @@ export class AdminService {
       this.hwtpService.addStuff(b);
       return b;
     }, stuff), catchError((err) => {
-      this.authorized = null;
-      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+      this.error();
       return err;
     }));
   }
@@ -89,8 +93,7 @@ export class AdminService {
 
       this.orderHandler.use(new Event('DELETE', order));
     }, (err) => {
-      this.authorized = null;
-      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+      this.error();
     });
   }
 
@@ -103,8 +106,7 @@ export class AdminService {
 
       this.orderHandler.use(new Event('DELETE', order));
     }, (err) => {
-      this.authorized = null;
-      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+      this.error();
     });
   }
 
@@ -115,8 +117,7 @@ export class AdminService {
     this.httpClient.post(`http://localhost:9090/orders/${order.id}`, comment, {headers}).subscribe((res) => {
       this.snackBar.open('Входящий заказ: ', 'Прокомментирован', {duration: 2000});
     }, (err) => {
-      this.authorized = null;
-      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+      this.error();
     });
   }
 
@@ -124,14 +125,14 @@ export class AdminService {
     this.httpClient.post(`http://localhost:9090/password`, password).subscribe((res: string) => {
       if (res) {
         this.authorized = res[0];
+        localStorage['token'] = res[0];
         this.router.navigateByUrl('/admin-panel/orders');
 
         const headers = new HttpHeaders().set('Auth', this.authorized);
         this.httpClient.get('http://localhost:9090/orders', {headers}).subscribe((orders) => {
         this.orderHandler.use(new Event('ADD_ALL', orders));
         }, (err) => {
-          this.authorized = null;
-          this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+          this.error();
         });
         } else {
           this.router.navigateByUrl('/');
@@ -142,4 +143,11 @@ export class AdminService {
     });
   }
 
+  error(popup = true) {
+    this.authorized = null;
+    if (popup) {
+      this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+    }
+    this.router.navigateByUrl('/password');
+  }
 }

@@ -17,6 +17,7 @@ export class HWTPService {
   buyedStuff = new Subject();
   summ = new Subject();
   amount = new Subject();
+  filter$ = new Subject();
   stuffHandler: EventHandler;
   buyedStuffHandler = new EventHandler(this.buyedStuff, new StuffReducer());
 
@@ -73,5 +74,9 @@ export class HWTPService {
 
   addStuff(stuff: Stuff) {
     this.stuffHandler.use(new Event('ADD', stuff));
+  }
+
+  changeFilter(filter: any) {
+    this.filter$.next(filter);
   }
 }

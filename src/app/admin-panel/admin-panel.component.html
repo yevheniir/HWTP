@@ -10,6 +10,9 @@
           <mat-button-toggle
           [routerLink]="[ 'stuff-manager' ]" value="/admin-panel/stuff-manager">Управлять имеющимися продуктами</mat-button-toggle>
 
+          <mat-button-toggle
+          (click)="exit()">Выход</mat-button-toggle>
+
         </mat-button-toggle-group>
   </div>
 
