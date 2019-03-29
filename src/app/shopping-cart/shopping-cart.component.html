@@ -5,7 +5,8 @@
 
     <mat-card>
         <mat-card-title>Правила и предостережения</mat-card-title>
-        <mat-card-content>Тyт будет много текста</mat-card-content>
+        <mat-card-content>1. Компания не несет никакой ответственности за проданий товар.<br>
+                          2. После оплати и загрузки скриншота, ваша покупка будет просмотрена в течении дня.</mat-card-content>
         <form [formGroup]="readyForm">
             <mat-checkbox formControlName="check" required>Я все осознал и готов продолжить</mat-checkbox>
         </form>
@@ -49,7 +50,7 @@
 
         <mat-card-title>Укажите email</mat-card-title>
         <mat-form-field class="example-full-width">
-            <input matInput formControlName="email" placeholder="Поле для почты">
+            <input type="email" matInput formControlName="email" placeholder="Поле для почты">
         </mat-form-field>
 
 

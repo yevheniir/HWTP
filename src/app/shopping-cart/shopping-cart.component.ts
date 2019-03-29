@@ -25,7 +25,7 @@ export class ShoppingCartComponent implements OnInit {
     });
 
     this.payForm = fb.group({
-      email: ['', Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       screen: ['', Validators.required],
       comment: ['']
     });
@@ -48,12 +48,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   addOrder() {
-    this.isEditable = false;
-
-    this.hwtpService.addOrder(this.payForm.value).subscribe((res) => {
-      this.uploader.uploadAll();
-    });
-    // this.hwtpService.addOrder(this.payForm);
+    console.log(this.payForm.value, this.payForm.valid);
+    if (this.payForm.valid) {
+      this.hwtpService.addOrder(this.payForm.value).subscribe((res) => {
+        this.uploader.uploadAll();
+        this.isEditable = false;
+      });
+    }
   }
 
 }

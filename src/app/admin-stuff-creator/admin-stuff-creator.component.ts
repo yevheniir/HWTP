@@ -43,6 +43,7 @@ export class AdminStuffCreatorComponent implements OnInit {
       const stuff: any = this.stuffForm.value;
       this.adminService.addStuff(stuff).subscribe((res) => {
         this.uploader.uploadAll();
+        this.stuffForm.controls['file'].setValue('');
       });
     }
 

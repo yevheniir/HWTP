@@ -13,7 +13,7 @@
 
       <div class="content">
         <!-- <p>{{order.screen}}</p> -->
-        <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:8080/image-response-entity/{{order.screen}}" alt="">
+        <img [ngClass]="{image: true, full: fullVersion}" (click)="switchScreen($event)" src="http://localhost:9090/image-response-entity/{{order.screen}}" alt="">
 
         <app-buyed-stuff-list [removable]="false" [stuff]="order.stuffs"></app-buyed-stuff-list>
       </div>

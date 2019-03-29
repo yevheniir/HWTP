@@ -55,7 +55,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    this.httpClient.delete(`http://localhost:9090/stuff/${stuff.id}`, {headers}).subscribe((res) => {
+    this.httpClient.patch(`http://localhost:9090/stuff/${stuff.id}`, [true], {headers}).subscribe((res) => {
       this.snackBar.open('Старий продукт: ', 'Снят с продаж', {duration: 2000});
       this.hwtpService.deleteStuff(stuff);
     }, (err) => {
@@ -125,9 +125,17 @@ export class AdminService {
       if (res) {
         this.authorized = res[0];
         this.router.navigateByUrl('/admin-panel/orders');
-      } else {
-        this.router.navigateByUrl('/');
-      }
+
+        const headers = new HttpHeaders().set('Auth', this.authorized);
+        this.httpClient.get('http://localhost:9090/orders', {headers}).subscribe((orders) => {
+        this.orderHandler.use(new Event('ADD_ALL', orders));
+        }, (err) => {
+          this.authorized = null;
+          this.snackBar.open('Случилось непоправимое: ', 'Ошибка', {duration: 2000});
+        });
+        } else {
+          this.router.navigateByUrl('/');
+        }
 
     }, (err) => {
       this.router.navigateByUrl('/');
