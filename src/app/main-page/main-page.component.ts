@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
     });
 
     hwtpService.filter$.subscribe((f: any) => {
-      this.filter = f;
+      this.filter = new Map<any, any[]>(f);
     });
    }
 
