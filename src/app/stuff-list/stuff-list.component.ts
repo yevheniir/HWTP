@@ -41,15 +41,20 @@ export class StuffListComponent implements OnInit, OnChanges {
     }
 
     if (filter && filter.previousValue !== filter.currentValue) {
+
       const newDate = this.stuff.filter((element: Stuff) => {
 
-        let valid = false;
+        let valid = true;
+        if (filter.currentValue.size == 0) {
+          return true;
+        }
 
-        filter.currentValue.forEach((value: any[], key: string) => {
-          if (value.includes(element[key])) {
-            valid = true;
+        filter.currentValue.forEach((value: string[], key: string) => {
+          if (!value.includes(element[key].toString())) {
+            valid = false;
           }
         });
+
         return valid;
       });
 

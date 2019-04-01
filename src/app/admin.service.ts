@@ -47,7 +47,7 @@ export class AdminService {
 
       const headers = new HttpHeaders().set('Auth', this.authorized);
 
-      this.httpClient.get('http://localhost:9090/orders', {headers}).subscribe((orders) => {
+      this.httpClient.get('https://hwtp.herokuapp.com/orders', {headers}).subscribe((orders) => {
         this.orderHandler.use(new Event('ADD_ALL', orders));
       }, (err) => {
         this.error();
@@ -61,7 +61,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    this.httpClient.patch(`http://localhost:9090/stuff/${stuff.id}`, [true], {headers}).subscribe((res) => {
+    this.httpClient.patch(`https://hwtp.herokuapp.com/stuff/${stuff.id}`, [true], {headers}).subscribe((res) => {
       this.snackBar.open('Старий продукт: ', 'Снят с продаж', {duration: 2000});
       this.hwtpService.deleteStuff(stuff);
     }, (err) => {
@@ -73,7 +73,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    return this.httpClient.post('http://localhost:9090/stuff', stuff, {headers}).pipe(scan((a, b: Stuff) => {
+    return this.httpClient.post('https://hwtp.herokuapp.com/stuff', stuff, {headers}).pipe(scan((a, b: Stuff) => {
       this.snackBar.open('Новий продукт: ', 'Добавлен', {duration: 2000});
 
       this.hwtpService.addStuff(b);
@@ -88,7 +88,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    this.httpClient.delete(`http://localhost:9090/orders/${order.id}`, {headers}).subscribe((res) => {
+    this.httpClient.delete(`https://hwtp.herokuapp.com/orders/${order.id}`, {headers}).subscribe((res) => {
       this.snackBar.open('Входящий заказ: ', 'Одобрен', {duration: 2000});
 
       this.orderHandler.use(new Event('DELETE', order));
@@ -101,7 +101,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    this.httpClient.delete(`http://localhost:9090/orders/cancel/${order.id}`, {headers}).subscribe((res) => {
+    this.httpClient.delete(`https://hwtp.herokuapp.com/orders/cancel/${order.id}`, {headers}).subscribe((res) => {
       this.snackBar.open('Входящий заказ: ', 'Отклонен', {duration: 2000});
 
       this.orderHandler.use(new Event('DELETE', order));
@@ -114,7 +114,7 @@ export class AdminService {
 
     const headers = new HttpHeaders().set('Auth', this.authorized);
 
-    this.httpClient.post(`http://localhost:9090/orders/${order.id}`, comment, {headers}).subscribe((res) => {
+    this.httpClient.post(`https://hwtp.herokuapp.com/orders/${order.id}`, comment, {headers}).subscribe((res) => {
       this.snackBar.open('Входящий заказ: ', 'Прокомментирован', {duration: 2000});
     }, (err) => {
       this.error();
@@ -122,14 +122,14 @@ export class AdminService {
   }
 
   sendPassword(password: string) {
-    this.httpClient.post(`http://localhost:9090/password`, password).subscribe((res: string) => {
+    this.httpClient.post(`https://hwtp.herokuapp.com/password`, password).subscribe((res: string) => {
       if (res) {
         this.authorized = res[0];
         localStorage['token'] = res[0];
         this.router.navigateByUrl('/admin-panel/orders');
 
         const headers = new HttpHeaders().set('Auth', this.authorized);
-        this.httpClient.get('http://localhost:9090/orders', {headers}).subscribe((orders) => {
+        this.httpClient.get('https://hwtp.herokuapp.com/orders', {headers}).subscribe((orders) => {
         this.orderHandler.use(new Event('ADD_ALL', orders));
         }, (err) => {
           this.error();

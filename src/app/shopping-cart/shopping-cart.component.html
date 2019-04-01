@@ -5,8 +5,8 @@
 
     <mat-card>
         <mat-card-title>Правила и предостережения</mat-card-title>
-        <mat-card-content>1. Компания не несет никакой ответственности за проданий товар.<br>
-                          2. После оплати и загрузки скриншота, ваша покупка будет просмотрена в течении дня.</mat-card-content>
+        <mat-card-content>1. Компания не несет никакой ответственности за проданный товар.<br>
+                          2. После оплаты и загрузки скриншота, ваша покупка будет просмотрена в течение дня.</mat-card-content>
         <form [formGroup]="readyForm">
             <mat-checkbox formControlName="check" required>Я все осознал и готов продолжить</mat-checkbox>
         </form>
@@ -40,6 +40,7 @@
 
 
         <mat-card-title>Загрузи скриншот своей оплаты</mat-card-title>
+        <p>ТОЛЬКО .jpg иначе валидатор не сможет проверить оплату!!!</p>
         <div class="file">
             <input formControlName="screen" mat-raised-button color="primary" class="ng-hide" id="input-file-id"
             ng2FileSelect [uploader]="uploader"

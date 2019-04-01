@@ -9,7 +9,7 @@ import { StuffListComponent } from './stuff-list/stuff-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
@@ -38,7 +38,7 @@ import { PasswordComponent } from './password/password.component';
     AdminOrdersComponent,
     AdminStuffCreatorComponent,
     AdminStuffManagerComponent,
-    FileSelectDirective,
+
     CommentPopupComponent,
     PasswordComponent,
   ],
@@ -50,6 +50,7 @@ import { PasswordComponent } from './password/password.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    FileUploadModule
   ],
   entryComponents: [
     CommentPopupComponent,

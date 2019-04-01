@@ -31,7 +31,7 @@ export class HWTPService {
       const customHeaders: HttpHeaders = new HttpHeaders();
       customHeaders.append('Cookie', 'SESSION=MjdiYzA2MWQtMmIwNi00NTRjLTgzNDgtYzQ3MTU5YjNmODBm');
 
-      this.httpClient.get('http://localhost:9090/stuff', { headers: customHeaders }).subscribe((stuff) => {
+      this.httpClient.get('https://hwtp.herokuapp.com/stuff', { headers: customHeaders }).subscribe((stuff) => {
         this.stuffHandler.use(new Event('ADD_ALL', stuff));
         this.refreshStats();
       });
@@ -65,7 +65,7 @@ export class HWTPService {
     order.stuffs = this.buyedStuffHandler.getArray();
     this.buyedStuffHandler.use(new Event('ADD_ALL', []));
     this.refreshStats();
-    return this.httpClient.post('http://localhost:9090/orders', order);
+    return this.httpClient.post('https://hwtp.herokuapp.com/orders', order);
   }
 
   deleteStuff(stuff: Stuff) {

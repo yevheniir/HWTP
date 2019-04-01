@@ -15,7 +15,7 @@ export class FiltersComponent implements OnInit, OnChanges {
   teacherTitle = 'преподавателем';
   subjectTitle = 'предметом';
   courcesTitle = 'курсом';
-  cources = ['1 курс', '2 курс', '3 курс', '4 курс'];
+  cources = ['1', '2', '3', '4'];
   subjects = [];
   teachers = [];
   filters = new Map<string, any[]>();
@@ -47,7 +47,11 @@ export class FiltersComponent implements OnInit, OnChanges {
   }
 
   changeFilter(filter: any) {
-    this.filters.set(Object.keys(filter)[0], filter[Object.keys(filter)[0]]);
+    if (filter[Object.keys(filter)[0]].length == 0) {
+      this.filters.delete(Object.keys(filter)[0]);
+    } else {
+      this.filters.set(Object.keys(filter)[0], filter[Object.keys(filter)[0]]);
+    }
 
     this.change.emit(this.filters);
   }
